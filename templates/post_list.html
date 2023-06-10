@@ -1,0 +1,27 @@
+
+    {%extends 'base.html'%}
+    {%block content%}
+    <a class="btn btn-dark" href="/createpost">       Create new post                   </a>
+    <div class="container">
+
+        <h2> Posts list </h2>
+<!--        {{students}}-->
+        <table class="table">
+            <tr> <th>Post  ID</th>
+                 <th>Post Title</th>
+                 <th> Post Body </th>
+            </tr>
+                {%for post in myPosts%}
+                <tr>
+                    <td> {{post.id}} </td>
+                     <td> {{post.post_title}}</td>
+                     <td> {{post.post_body}} </td>
+                    <td> <a href="{{url_for('post_view', id=post.id)}}" class="btn btn-info" > Show</a></td>
+                    <td> <a href="{{url_for('post_delete', id=post.id)}}" class="btn btn-danger" > delete</a></td>
+                </tr>
+
+                    {%endfor%}
+        </table>
+    </div>
+
+{%endblock%}
